@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Form</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Background Styling */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+            background: linear-gradient(135deg, #FFC0CB, #0072ff, white);
+        }
+
+        /* Login Form */
+        .login-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 350px;
+            height: 460px;
+            text-align: center;
+        }
+
+        /* Avatar Image */
+        .imgcontainer img {
+            width: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+        }
+
+        /* Input Fields */
+        input[type="text"], input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            text-align: center;
+        }
+
+        /* Buttons */
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            background: #04AA6D;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #03885a;
+        }
+
+        /* Cancel Button */
+        .cancelbtn {
+            background: #f44336;
+            margin-top: 10px;
+        }
+
+        /* Forgot Password Link */
+        .psw {
+            display: block;
+            margin-top: 15px;
+        }
+
+        .psw a {
+            color: #0072ff;
+            text-decoration: none;
+        }
+
+        .psw a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="imgcontainer">
+            <img src="./images/aaa.jpg" alt="Avatar">
+        </div>
+
+        <form action="/action_page.php" method="post">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="uname" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
+
+            <button type="submit">Login</button>
+
+            <button type="button" class="cancelbtn">Cancel</button>
+
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </form>
+    </div>
+
+</body>
+</html>

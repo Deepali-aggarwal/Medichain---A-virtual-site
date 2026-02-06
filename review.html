@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Review Page</title>
+    <!-- <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+        .doctor-card {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .doctor-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-right: 20px;
+        }
+        .doctor-details {
+            flex: 1;
+        }
+        .doctor-name {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .doctor-info {
+            font-size: 14px;
+            color: #666;
+        }
+        .rating {
+            color: green;
+            font-weight: bold;
+        }
+        .consult-fee {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+        .consult-button {
+            background-color: #007bff;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .consult-button:hover {
+            background-color: #0056b3;
+        }
+    </style> -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .doctor-card {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .doctor-card:hover {
+            transform: scale(1.02);
+        }
+        .doctor-card img {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+        .doctor-details {
+            flex: 1;
+            text-align: left;
+        }
+        .doctor-name {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+        .doctor-info {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            line-height: 1.5;
+        }
+        .rating {
+            font-size: 14px;
+            font-weight: bold;
+            color: #28a745;
+            margin-top: 5px;
+        }
+        .consult-fee {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+            text-align: right;
+        }
+        .consult-button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background 0.3s ease-in-out;
+            display: block;
+            margin-top: 10px;
+        }
+        .consult-button:hover {
+            background-color: #0056b3;
+        }
+        #loadMoreBtn {
+            background-color: #28a745;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            transition: background 0.3s ease-in-out;
+        }
+        #loadMoreBtn:hover {
+            background-color: #218838;
+        }
+        #extraDoctors {
+            display: none;
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+    </style>
+    
+    <script>
+        function bookConsultation(doctorName) {
+            alert("Consultation booked with " + doctorName);
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Popular Doctors Available</h2>
+        
+        <div class="doctor-card">
+            <img src="./images/b.png" alt="Dr. Md Asif">
+            <div class="doctor-details">
+                <div class="doctor-name">Dr. sameer jain</div>
+                <div class="doctor-info">14 years of Experience<br>MBBS, MD - Dermatology<br>Private Clinic, Hyderabad</div>
+                <div class="rating">⭐ 4.6 • 6240 Patient Stories</div>
+            </div>
+            <div>
+                <div class="consult-fee">₹ 1500/-</div>
+                <button class="consult-button" onclick="bookConsultation('Dr. Md Asif')">Consult Now</button>
+            </div>
+        </div>
+        
+        <div class="doctor-card">
+            <img src="./images/a.png" alt="Dr. Himanshu Mansharamani">
+            <div class="doctor-details">
+                <div class="doctor-name">Dr. Himanshu Mansharamani</div>
+                <div class="doctor-info">9 years of Experience<br>MBBS, MD - Psychiatry<br>Shantikunj Clinic, Indore</div>
+                <div class="rating">⭐ 4.8 • 5374 Patient Stories</div>
+            </div>
+            <div>
+                <div class="consult-fee">₹ 2000/-</div>
+                <button class="consult-button" onclick="bookConsultation('Dr. Himanshu Mansharamani')">Consult Now</button>
+            </div>
+        </div>
+        
+        <div class="doctor-card">
+            <img src="./images/c.png" alt="Dr. Patel Nishtha Hitendrabhai">
+            <div class="doctor-details">
+                <div class="doctor-name">Dr. Patel Nishtha Hitendrabhai</div>
+                <div class="doctor-info">7 years of Experience<br>MBBS, MD - Dermatology<br>Kosmoderma, Bengaluru</div>
+                <div class="rating">⭐ 4.5 • 4295 Patient Stories</div>
+            </div>
+            <div>
+                <div class="consult-fee">₹ 1000/-</div>
+                <button class="consult-button" onclick="bookConsultation('Dr. Patel Nishtha Hitendrabhai')">Consult Now</button>
+            </div>
+        </div>
+
+        <div class="doctor-card">
+            <img src="./images/d.png" alt="Dr. Patel Nishtha Hitendrabhai">
+            <div class="doctor-details">
+                <div class="doctor-name">Dr.dhairya</div>
+                <div class="doctor-info">7 years of Experience<br>MBBS, MD - Dermatology<br>Kosmoderma, Bengaluru</div>
+                <div class="rating">⭐ 4.5 • 4295 Patient Stories</div>
+            </div>
+            <div>
+                <div class="consult-fee">₹ 1500/-</div>
+                <button class="consult-button" onclick="bookConsultation('Dr. Patel Nishtha Hitendrabhai')">Consult Now</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+<!-- Load More Button -->
+<button id="loadMoreBtn" class="consult-button" style="display: block; margin: 20px auto;">Load More</button>
+
+<!-- Hidden Additional Doctor Cards -->
+<div id="extraDoctors" style="display: none;">
+    <div class="doctor-card">
+        <img src="./images/a.png" alt="Dr. Rajesh Sharma">
+        <div class="doctor-details">
+            <div class="doctor-name">Dr. Rajesh Sharma</div>
+            <div class="doctor-info">15 years of Experience<br>MBBS, MD - Cardiology<br>Apollo Hospital, Delhi</div>
+            <div class="rating">⭐ 4.7 • 5321 Patient Stories</div>
+        </div>
+        <div>
+            <div class="consult-fee">₹ 1000/-</div>
+            <button class="consult-button" onclick="bookConsultation('Dr. Rajesh Sharma')">Consult Now</button>
+        </div>
+    </div>
+
+    <div class="doctor-card">
+        <img src="./images/oooo.png" alt="Dr. Sneha Kapoor">
+        <div class="doctor-details">
+            <div class="doctor-name">Dr. Sneha Kapoor</div>
+            <div class="doctor-info">10 years of Experience<br>MBBS, MD - Gynecology<br>Fortis Hospital, Mumbai</div>
+            <div class="rating">⭐ 4.8 • 4892 Patient Stories</div>
+        </div>
+        <div>
+            <div class="consult-fee">₹ 1500/-</div>
+            <button class="consult-button" onclick="bookConsultation('Dr. Sneha Kapoor')">Consult Now</button>
+        </div>
+    </div>
+
+    <div class="doctor-card">
+        <img src="./images/c.png" alt="Dr. Karan Malhotra">
+        <div class="doctor-details">
+            <div class="doctor-name">Dr. Karan Malhotra</div>
+            <div class="doctor-info">12 years of Experience<br>MBBS, MD - Orthopedics<br>Max Hospital, Chandigarh</div>
+            <div class="rating">⭐ 4.6 • 5123 Patient Stories</div>
+        </div>
+        <div>
+            <div class="consult-fee">₹ 699/-</div>
+            <button class="consult-button" onclick="bookConsultation('Dr. Karan Malhotra')">Consult Now</button>
+        </div>
+    </div>
+
+    <div class="doctor-card">
+        <img src="./images/a.png" alt="Dr. Ananya Verma">
+        <div class="doctor-details">
+            <div class="doctor-name">Dr. Ananya Verma</div>
+            <div class="doctor-info">8 years of Experience<br>MBBS, MD - Pediatrics<br>Rainbow Hospital, Kolkata</div>
+            <div class="rating">⭐ 4.9 • 6543 Patient Stories</div>
+        </div>
+        <div>
+            <div class="consult-fee">₹ 1500/-</div>
+            <button class="consult-button" onclick="bookConsultation('Dr. Ananya Verma')">Consult Now</button>
+        </div>
+    </div>
+
+    <div class="doctor-card">
+        <img src="./images/b.png" alt="Dr. Rohan Mehta">
+        <div class="doctor-details">
+            <div class="doctor-name">Dr. Rohan Mehta</div>
+            <div class="doctor-info">11 years of Experience<br>MBBS, MD - Neurology<br>Medanta, Gurgaon</div>
+            <div class="rating">⭐ 4.5 • 4231 Patient Stories</div>
+        </div>
+        <div>
+            <div class="consult-fee">₹ 1000/-</div>
+            <button class="consult-button" onclick="bookConsultation('Dr. Rohan Mehta')">Consult Now</button>
+        </div>
+    </div>
+
+    <div class="doctor-card">
+        <img src="./images/d.png" alt="Dr. Priya Singh">
+        <div class="doctor-details">
+            <div class="doctor-name">Dr. Priya Singh</div>
+            <div class="doctor-info">9 years of Experience<br>MBBS, MD - Endocrinology<br>AIIMS, Delhi</div>
+            <div class="rating">⭐ 4.7 • 5342 Patient Stories</div>
+        </div>
+        <div>
+            <div class="consult-fee">₹ 1800/-</div>
+            <button class="consult-button" onclick="bookConsultation('Dr. Priya Singh')">Consult Now</button>
+        </div>
+    </div>
+
+    <div class="doctor-card">
+        <img src="./images/c.png" alt="Dr. Vikram Ahuja">
+        <div class="doctor-details">
+            <div class="doctor-name">Dr. Vikram Ahuja</div>
+            <div class="doctor-info">13 years of Experience<br>MBBS, MD - Pulmonology<br>Columbia Asia, Bangalore</div>
+            <div class="rating">⭐ 4.6 • 4983 Patient Stories</div>
+        </div>
+        <div>
+            <div class="consult-fee">₹ 2000/-</div>
+            <button class="consult-button" onclick="bookConsultation('Dr. Vikram Ahuja')">Consult Now</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("loadMoreBtn").addEventListener("click", function() {
+        document.getElementById("extraDoctors").style.display = "block";
+        this.style.display = "none"; // Hide the button after clicking
+    });
+</script>
