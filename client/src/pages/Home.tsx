@@ -24,26 +24,30 @@ export default function Home() {
     <div className={darkMode ? 'dark-mode' : ''}>
       <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
-      <section className="home pt-5 pb-5" id="home">
-        <div className="row justify-content-evenly align-middle">
-          <div className="col-10 col-md-6 text-center text-md-start" data-aos="slide-right">
-            <h2 style={{ color: 'var(--heading)' }}>
-              Your Health, <br /><span className="c-orange">Our Priority</span>
-            </h2>
-            <p className="text-muted">
-              Find trusted doctors, book video consultations, and get AI-powered health advice — all in one platform.
-            </p>
-            <div className="d-flex gap-3 flex-wrap justify-content-center justify-content-md-start">
-              <Link to="/reviews">
-                <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill">Find a Doctor</button>
-              </Link>
-              <Link to="/video-consult">
-                <button className="btn btn-outline-primary mt-3 py-3 px-5 rounded-pill" style={{ borderColor: 'var(--accent2)', color: 'var(--accent2)' }}>Video Consult</button>
-              </Link>
-            </div>
+      <section className="hero-section" id="home">
+        <div className="hero-overlay"></div>
+        <div className="hero-content" data-aos="fade-up">
+          <span className="hero-badge">Trusted by 10,000+ Patients</span>
+          <h1 className="hero-title">
+            Your Health, <span className="hero-highlight">Our Mission</span>
+          </h1>
+          <p className="hero-subtitle">
+            Connect with top doctors, book video consultations, and get AI-powered health advice — all from one platform.
+          </p>
+          <div className="hero-actions">
+            <Link to="/reviews">
+              <button className="hero-btn-primary">Find a Doctor</button>
+            </Link>
+            <Link to="/video-consult">
+              <button className="hero-btn-secondary">Video Consult</button>
+            </Link>
           </div>
-          <div className="col-10 col-md-4 d-none d-md-block">
-            <img src="/images/doctor.png" className="img-fluid" alt="" />
+          <div className="hero-stats">
+            <div className="stat-item"><span className="stat-num">500+</span><span className="stat-label">Doctors</span></div>
+            <div className="stat-divider"></div>
+            <div className="stat-item"><span className="stat-num">20K+</span><span className="stat-label">Appointments</span></div>
+            <div className="stat-divider"></div>
+            <div className="stat-item"><span className="stat-num">98%</span><span className="stat-label">Satisfaction</span></div>
           </div>
         </div>
       </section>

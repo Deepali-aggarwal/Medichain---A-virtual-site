@@ -18,8 +18,8 @@ export default function Navbar({ darkMode, setDarkMode }: NavbarProps) {
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-white sticky-top" id="navbar-top">
       <div className="container-fluid px-3 px-md-5">
-        <Link className="navbar-brand fw-bold fs-2" to="/" style={{ color: 'var(--heading)' }}>
-          Medichain
+        <Link className="navbar-brand" to="/" style={{ color: 'var(--accent2)', fontFamily: "'Poppins', sans-serif", fontWeight: 800, fontSize: '1.8rem', letterSpacing: '-0.5px' }}>
+          Medi<span style={{ color: 'var(--accent)' }}>Chain</span>
         </Link>
         <div className="d-flex align-items-center gap-2">
           <button
