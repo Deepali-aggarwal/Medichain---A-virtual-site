@@ -28,32 +28,36 @@ export default function Home() {
         <div className="row justify-content-evenly align-middle">
           <div className="col-10 col-md-6 text-center text-md-start" data-aos="slide-right">
             <h2 style={{ color: 'var(--heading)' }}>
-              At Medichain you get <br /><span className="c-orange">Trusted Doctors</span>
+              Your Health, <br /><span className="c-orange">Our Priority</span>
             </h2>
             <p className="text-muted">
-              Blockchain-powered doctor reviews to ensure transparency and trust.
-              Choose the right doctor based on real patient experiences.
+              Find trusted doctors, book video consultations, and get AI-powered health advice — all in one platform.
             </p>
-            <Link to="/reviews">
-              <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill">Find a Doctor</button>
-            </Link>
+            <div className="d-flex gap-3 flex-wrap justify-content-center justify-content-md-start">
+              <Link to="/reviews">
+                <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill">Find a Doctor</button>
+              </Link>
+              <Link to="/video-consult">
+                <button className="btn btn-outline-primary mt-3 py-3 px-5 rounded-pill" style={{ borderColor: 'var(--accent2)', color: 'var(--accent2)' }}>Video Consult</button>
+              </Link>
+            </div>
           </div>
           <div className="col-10 col-md-4 d-none d-md-block">
-            <img src="/images/doc.png" className="img-fluid" alt="" />
+            <img src="/images/doctor.png" className="img-fluid" alt="" />
           </div>
         </div>
       </section>
 
       <section className="expertise mt-5" id="service">
         <div className="heading text-center">
-          <small>our Expertise</small>
-          <h3>Provide Wide Range of <br /> Services</h3>
+          <small>Our Services</small>
+          <h3>Comprehensive Healthcare <br />Solutions</h3>
         </div>
         <div className="row justify-content-evenly mt-5">
           {[
-            { img: '/images/one on one.png', title: 'One on One Consultation', desc: 'Get personalized video consultations with verified doctors from the comfort of your home.', link: '/video-consult', label: 'Consult Now' },
-            { img: '/images/appointment.png', title: 'Online Appointments & Scheduling', desc: 'Book appointments with top doctors at your preferred time slot instantly.', link: '/reviews', label: 'Book Now' },
-            { img: '/images/ambu.png', title: '24/7 Emergency Assistance', desc: 'Round-the-clock emergency support with rapid response and ambulance coordination.', link: '#contact', label: 'Call Ambulance' },
+            { img: '/images/one on one.png', title: 'Video Consultation', desc: 'Connect with verified doctors face-to-face through secure video calls from anywhere.', link: '/video-consult', label: 'Consult Now' },
+            { img: '/images/appointment.png', title: 'Smart Appointment Booking', desc: 'Book appointments with top specialists at your preferred time in just a few clicks.', link: '/reviews', label: 'Book Now' },
+            { img: '/images/ambu.png', title: 'Emergency Support', desc: '24/7 emergency assistance with rapid response and ambulance coordination when you need it.', link: '#contact', label: 'Get Help' },
           ].map((s, i) => (
             <div key={i} className="col-10 col-md-4" data-aos="fade-up">
               <div className="service-card">
@@ -88,7 +92,7 @@ export default function Home() {
                     <span className="progress-value javascript-progress">10K+</span>
                   </div>
                   <br />
-                  <span className="text">Secure Reviews</span>
+                  <span className="text">Happy Patients</span>
                 </div>
               </div>
             </div>
@@ -96,10 +100,10 @@ export default function Home() {
               <div className="col-10 col-md-6">
                 <div className="progress-card ms-3 ms-md-0">
                   <div className="circular-progress php">
-                    <span className="progress-value php-progress">100%</span>
+                    <span className="progress-value php-progress">98%</span>
                   </div>
                   <br />
-                  <span className="text">Blockchain Integrity</span>
+                  <span className="text">Satisfaction Rate</span>
                 </div>
               </div>
               <div className="col-10 col-md-6 mt-4 mt-md-0">
@@ -116,20 +120,24 @@ export default function Home() {
           <div className="col-10 col-md-5 skill-detail" data-aos="slide-left">
             <div className="heading mt-5 mt-md-3">
               <small>About Us</small>
-              <h3>Saving Beautiful Lives</h3>
+              <h3>Modern Healthcare Platform</h3>
               <p className="text-muted">
-                Our mission is simple:<br />
-                ✅ Empower patients with authentic, unaltered doctor reviews.<br />
-                ✅ Eliminate fake ratings and manipulated testimonials.<br />
-                ✅ Help doctors build credibility based on real patient feedback.<br /><br />
-                With Medichain, you can confidently choose healthcare professionals who truly prioritize your well-being. Because when it comes to your health, trust matters most.
+                Medichain is a full-stack healthcare platform designed to connect patients with trusted doctors seamlessly. 
+                Our mission is simple:
               </p>
               <p className="text-muted">
-                We've integrated blockchain technology to create a secure, tamper-proof review system — ensuring that only verified patients can leave feedback about their experiences.
+                ✅ Browse verified doctors with real patient reviews.<br />
+                ✅ Book video consultations instantly.<br />
+                ✅ Get AI-powered health advice anytime.<br />
+                ✅ Manage all your healthcare needs in one place.<br />
+              </p>
+              <p className="text-muted">
+                We believe healthcare should be accessible, transparent, and driven by technology. 
+                From secure authentication to real-time video calls and smart AI chat — Medichain brings modern medicine to your fingertips.
               </p>
               <Link to="/reviews">
                 <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill" style={{ color: '#fff' }}>
-                  Book an Appointment
+                  Get Started
                 </button>
               </Link>
             </div>
@@ -139,13 +147,13 @@ export default function Home() {
 
       <section className="portfolio" id="portfolio">
         <div className="heading text-center pt-5">
-          <small>Our High Rated Doctors</small>
-          <h3>Choose Your Doctor</h3>
+          <small>Our Top Doctors</small>
+          <h3>Choose Your Specialist</h3>
         </div>
         <div className="portfolio-body">
           <div className="row justify-content-evenly px-4">
             {[
-              { img: '/images/a.png', name: 'Dr. Satyender Singh', badge1: 'General Practitioner', badge2: '4.5⭐', badge3: '25 yrs exp' },
+              { img: '/images/a.png', name: 'Dr. Satyender Singh', badge1: 'General Physician', badge2: '4.5⭐', badge3: '25 yrs exp' },
               { img: '/images/2doc.jpg', name: 'Dr. Ashutosh Pandey', badge1: 'General Surgeon', badge2: '4.7⭐', badge3: '10 yrs exp' },
               { img: '/images/c.png', name: 'Dr. Rajeev Gupta', badge1: 'Cardiologist', badge2: '4.2⭐', badge3: '30 yrs exp' },
             ].map((doc, i) => (
@@ -186,7 +194,7 @@ export default function Home() {
           <div className="text-center mt-4">
             <Link to="/reviews">
               <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill" style={{ width: 'min(400px, 90%)', color: '#fff' }}>
-                Find More Doctors
+                Browse All Doctors
               </button>
             </Link>
           </div>
@@ -202,16 +210,16 @@ export default function Home() {
           <div className="col-md-6 col-10 mt-5" data-aos="slide-left">
             <div className="heading">
               <small>Testimonials</small>
-              <h3>Happy Clients Feedback</h3>
+              <h3>What Our Patients Say</h3>
               <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
                   <div className="carousel-item active">
                     <div className="row justify-content-evenly">
                       <div className="col-2 text-center"><i className="bi bi-quote"></i></div>
                       <div className="col-10">
-                        <p className="text-muted">Medichain is revolutionary! The blockchain-based reviews gave me confidence to choose the right doctor. The consultation was thorough and professional.</p>
+                        <p className="text-muted">Medichain made finding a doctor so easy! Video consultation saved me a trip to the clinic. The AI chat helped me understand my symptoms beforehand.</p>
                         <h4>Arvind Arora</h4>
-                        <small className="fs-6 text-muted">Heart patient</small>
+                        <small className="fs-6 text-muted">Regular patient</small>
                       </div>
                     </div>
                   </div>
@@ -219,9 +227,9 @@ export default function Home() {
                     <div className="row justify-content-evenly">
                       <div className="col-2 text-center"><i className="bi bi-quote"></i></div>
                       <div className="col-10">
-                        <p className="text-muted">I found my doctor quickly and safely. The blockchain review system made me trust the feedback completely. A fantastic experience!</p>
+                        <p className="text-muted">I found my doctor quickly through genuine patient reviews. The video call quality was excellent and the doctor was very thorough.</p>
                         <h4>Ram Prasad</h4>
-                        <small className="fs-6 text-muted">Cancer patient</small>
+                        <small className="fs-6 text-muted">Post-surgery follow-up</small>
                       </div>
                     </div>
                   </div>
@@ -229,9 +237,9 @@ export default function Home() {
                     <div className="row justify-content-evenly">
                       <div className="col-2 text-center"><i className="bi bi-quote"></i></div>
                       <div className="col-10">
-                        <p className="text-muted">Medichain has completely changed how I approach healthcare! The blockchain integration guarantees authentic reviews so I can choose doctors with confidence.</p>
+                        <p className="text-muted">The AI health assistant is amazing! It helped me figure out what was wrong before I even booked an appointment. Highly recommend this platform.</p>
                         <h4>Sonia Malhotra</h4>
-                        <small className="fs-6 text-muted">Anemia patient</small>
+                        <small className="fs-6 text-muted">Wellness check-up</small>
                       </div>
                     </div>
                   </div>
@@ -252,14 +260,14 @@ export default function Home() {
 
       <section className="blog mt-5 pb-5" id="blog">
         <div className="heading text-center pt-5">
-          <small>Latest News</small>
-          <h3>Blog & Articles</h3>
+          <small>Latest Articles</small>
+          <h3>Health Tips & Insights</h3>
         </div>
         <div className="row justify-content-evenly px-4 mt-4" data-aos="fade-up">
           {[
             { img: '/images/123.png', title: 'Telemedicine: The Future of Healthcare', author: 'Deepali', date: 'Jan 15, 2025', text: 'Explore how telemedicine is transforming healthcare delivery, making it more accessible and convenient for patients worldwide.' },
             { img: '/images/dd.png', title: '5 Tips for Choosing the Right Doctor', author: 'Deepali', date: 'Feb 22, 2025', text: 'Finding the right doctor can be overwhelming. Here are 5 practical tips to help you make an informed decision for your health.' },
-            { img: '/images/b.png', title: 'How Blockchain Ensures Data Security', author: 'Deepali', date: 'Mar 8, 2025', text: 'Learn how blockchain technology creates an immutable record of patient reviews, ensuring complete transparency and trust.' },
+            { img: '/images/shakee.jpg', title: 'Benefits of Online Video Consultations', author: 'Deepali', date: 'Mar 8, 2025', text: 'Video consultations save time, reduce exposure to illnesses, and make specialist care accessible from the comfort of your home.' },
           ].map((post, i) => (
             <div key={i} className="blogpost col-md-4 col-10 mt-5 mt-md-0 rounded-5">
               <div className="card h-100">
@@ -281,7 +289,7 @@ export default function Home() {
       <section className="contact py-5" id="contact">
         <div className="heading text-center">
           <small>Get in Touch</small>
-          <h3>Any Questions? Feel Free to Contact</h3>
+          <h3>Have Questions? Contact Us</h3>
         </div>
         <div className="row justify-content-evenly mt-5">
           <div className="col-md-5 col-10 contact-details" data-aos="slide-right">
@@ -299,11 +307,11 @@ export default function Home() {
           </div>
           <div className="col-md-5 col-10 mt-3 mt-md-0" data-aos="slide-left">
             <div className="contact-form">
-              <div className="mb-3"><input type="text" className="form-control" placeholder="Name" /></div>
-              <div className="mb-3"><input type="email" className="form-control" placeholder="E-mail" /></div>
-              <div className="mb-3"><input type="text" className="form-control" placeholder="Mobile No." /></div>
-              <div className="mb-3"><textarea className="form-control" placeholder="Message" rows={5}></textarea></div>
-              <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill">Submit</button>
+              <div className="mb-3"><input type="text" className="form-control" placeholder="Your Name" /></div>
+              <div className="mb-3"><input type="email" className="form-control" placeholder="Email Address" /></div>
+              <div className="mb-3"><input type="text" className="form-control" placeholder="Phone Number" /></div>
+              <div className="mb-3"><textarea className="form-control" placeholder="Your Message" rows={5}></textarea></div>
+              <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill">Send Message</button>
             </div>
           </div>
         </div>
