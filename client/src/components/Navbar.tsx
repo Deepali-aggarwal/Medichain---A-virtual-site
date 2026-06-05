@@ -25,6 +25,8 @@ export default function Navbar() {
             <li className="nav-item"><a className="nav-link" href="/#service">Service</a></li>
             <li className="nav-item"><a className="nav-link" href="/#about">About</a></li>
             <li className="nav-item"><a className="nav-link" href="/#portfolio">Doctors</a></li>
+            <li className="nav-item"><Link className="nav-link" to="/video-consult">Video Consult</Link></li>
+            <li className="nav-item"><Link className="nav-link" to="/ai-chat">AI Chat</Link></li>
             <li className="nav-item"><a className="nav-link" href="/#testimonial">Clients Reviews</a></li>
             <li className="nav-item"><a className="nav-link" href="/#blog">Blog</a></li>
           </ul>
