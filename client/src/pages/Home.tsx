@@ -1,10 +1,17 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default function Home() {
+  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('theme') === 'dark');
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+    localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+  }, [darkMode]);
+
   useEffect(() => {
     const initAOS = async () => {
       const AOS = (await import('aos')).default;
@@ -14,13 +21,13 @@ export default function Home() {
   }, []);
 
   return (
-    <div>
-      <Navbar />
+    <div className={darkMode ? 'dark-mode' : ''}>
+      <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
       <section className="home pt-5 pb-5" id="home">
         <div className="row justify-content-evenly align-middle">
           <div className="col-10 col-md-6 text-center text-md-start" data-aos="slide-right">
-            <h2 style={{ color: '#3f396d' }}>
+            <h2 style={{ color: 'var(--heading)' }}>
               At Medichain you get <br /><span className="c-orange">Trusted Doctors</span>
             </h2>
             <p className="text-muted">
@@ -32,7 +39,7 @@ export default function Home() {
             </Link>
           </div>
           <div className="col-10 col-md-4 d-none d-md-block">
-            <img src="/images/dd-removebg-preview.png" className="img-fluid" alt="" />
+            <img src="/images/doc.png" className="img-fluid" alt="" />
           </div>
         </div>
       </section>
@@ -43,42 +50,22 @@ export default function Home() {
           <h3>Provide Wide Range of <br /> Services</h3>
         </div>
         <div className="row justify-content-evenly mt-5">
-          <div className="col-10 col-md-4" data-aos="fade-up">
-            <div className="service-card">
-              <div className="img">
-                <img src="/images/one on one.png" className="w-50 img-fluid img" alt="consult" />
-              </div>
-              <div className="content mt-3">
-                <h4>one on one consultation</h4>
-                <p className="text-muted">Dolor repellendus temporibus autem quibusdam officiis debitis rerum neces aibus minima veniam.</p>
-                <a href="" className="link">Call your Doctor</a>
-              </div>
-            </div>
-          </div>
-          <div className="col-md-4 col-10" data-aos="fade-up">
-            <div className="service-card">
-              <div className="img">
-                <img src="/images/appointment.png" className="w-60 img-fluid img" alt="get appointment" />
-              </div>
-              <div className="content mt-3">
-                <h4>Online Appointments & Scheduling</h4>
-                <p className="text-muted">Dolor repellendus temporibus autem quibusdam officiis debitis rerum neces aibus minima veniam.</p>
-                <a href="" className="link">Book Appointment</a>
+          {[
+            { img: '/images/one on one.png', title: 'One on One Consultation', desc: 'Get personalized video consultations with verified doctors from the comfort of your home.', link: '/video-consult', label: 'Consult Now' },
+            { img: '/images/appointment.png', title: 'Online Appointments & Scheduling', desc: 'Book appointments with top doctors at your preferred time slot instantly.', link: '/reviews', label: 'Book Now' },
+            { img: '/images/ambu.png', title: '24/7 Emergency Assistance', desc: 'Round-the-clock emergency support with rapid response and ambulance coordination.', link: '#contact', label: 'Call Ambulance' },
+          ].map((s, i) => (
+            <div key={i} className="col-10 col-md-4" data-aos="fade-up">
+              <div className="service-card">
+                <img src={s.img} className="w-50 img-fluid" alt={s.title} />
+                <div className="content mt-3">
+                  <h4>{s.title}</h4>
+                  <p className="text-muted">{s.desc}</p>
+                  <Link to={s.link} className="link">{s.label}</Link>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="col-md-4 col-10" data-aos="fade-up">
-            <div className="service-card">
-              <div className="img">
-                <img src="/images/ambu.png" className="w-50 img-fluid img" alt="" />
-              </div>
-              <div className="content mt-3">
-                <h4>24/7 Emergency Assistance</h4>
-                <p className="text-muted">Dolor repellendus temporibus autem quibusdam officiis debitis rerum neces aibus minima veniam.</p>
-                <a href="" className="link">Call Ambulance</a>
-              </div>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -92,16 +79,16 @@ export default function Home() {
                     <span className="progress-value html-progress">500+</span>
                   </div>
                   <br />
-                  <span className="text">Verified Doctor Count</span>
+                  <span className="text">Verified Doctors</span>
                 </div>
               </div>
               <div className="col-10 col-md-6 mt-4 mt-md-0">
                 <div className="progress-card ms-3 ms-md-0">
                   <div className="circular-progress trust">
-                    <span className="progress-value javascript-progress">10,000 +</span>
+                    <span className="progress-value javascript-progress">10K+</span>
                   </div>
                   <br />
-                  <span className="text">Secure Patient Reviews</span>
+                  <span className="text">Secure Reviews</span>
                 </div>
               </div>
             </div>
@@ -112,16 +99,16 @@ export default function Home() {
                     <span className="progress-value php-progress">100%</span>
                   </div>
                   <br />
-                  <span className="text">Data Integrity with Blockchain</span>
+                  <span className="text">Blockchain Integrity</span>
                 </div>
               </div>
               <div className="col-10 col-md-6 mt-4 mt-md-0">
                 <div className="progress-card ms-3 ms-md-0">
                   <div className="circular-progress reactjs">
-                    <span className="progress-value reactjs-progress">20,000 +</span>
+                    <span className="progress-value reactjs-progress">20K+</span>
                   </div>
                   <br />
-                  <span className="text">Appointments Completed</span>
+                  <span className="text">Appointments Done</span>
                 </div>
               </div>
             </div>
@@ -129,19 +116,19 @@ export default function Home() {
           <div className="col-10 col-md-5 skill-detail" data-aos="slide-left">
             <div className="heading mt-5 mt-md-3">
               <small>About Us</small>
-              <h3>Saving beautiful lifes</h3>
+              <h3>Saving Beautiful Lives</h3>
               <p className="text-muted">
                 Our mission is simple:<br />
                 ✅ Empower patients with authentic, unaltered doctor reviews.<br />
                 ✅ Eliminate fake ratings and manipulated testimonials.<br />
                 ✅ Help doctors build credibility based on real patient feedback.<br /><br />
-                With DocTrust, you can confidently choose healthcare professionals who truly prioritize your well-being. Because when it comes to your health, trust matters most.
+                With Medichain, you can confidently choose healthcare professionals who truly prioritize your well-being. Because when it comes to your health, trust matters most.
               </p>
               <p className="text-muted">
-                integrated blockchain technology to create a secure, tamper-proof review system—ensuring that only verified patients can leave feedback about their experiences.
+                We've integrated blockchain technology to create a secure, tamper-proof review system — ensuring that only verified patients can leave feedback about their experiences.
               </p>
               <Link to="/reviews">
-                <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill" style={{ textDecoration: 'none', color: '#fff' }}>
+                <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill" style={{ color: '#fff' }}>
                   Book an Appointment
                 </button>
               </Link>
@@ -152,25 +139,25 @@ export default function Home() {
 
       <section className="portfolio" id="portfolio">
         <div className="heading text-center pt-5">
-          <small>Our high rated Doctors</small>
-          <h3>Choose Doctor</h3>
+          <small>Our High Rated Doctors</small>
+          <h3>Choose Your Doctor</h3>
         </div>
         <div className="portfolio-body">
           <div className="row justify-content-evenly px-4">
             {[
-              { img: '/images/a.png', name: 'Dr. Satyender singh', badge1: 'General Practitioner', badge2: '4.5⭐', badge3: '25 year experience' },
-              { img: '/images/2doc.jpg', name: 'Dr. Ashutosh pandey', badge1: 'General Surgeon', badge2: '4.7⭐', badge3: '10 year exp' },
-              { img: '/images/c.png', name: 'Dr. Rajeev gupta', badge1: 'Cardiologist', badge2: '4.2⭐', badge3: '30 year exp' },
+              { img: '/images/a.png', name: 'Dr. Satyender Singh', badge1: 'General Practitioner', badge2: '4.5⭐', badge3: '25 yrs exp' },
+              { img: '/images/2doc.jpg', name: 'Dr. Ashutosh Pandey', badge1: 'General Surgeon', badge2: '4.7⭐', badge3: '10 yrs exp' },
+              { img: '/images/c.png', name: 'Dr. Rajeev Gupta', badge1: 'Cardiologist', badge2: '4.2⭐', badge3: '30 yrs exp' },
             ].map((doc, i) => (
-              <div key={i} className="post col-md-4 all col-10 mt-3 mt-md-0" data-aos="fade-up">
+              <div key={i} className="post col-md-4 col-10 mt-3 mt-md-0" data-aos="fade-up">
                 <div className="card">
                   <img src={doc.img} className="card-img-top" alt={doc.name} />
                   <div className="card-body text-center">
                     <h4 className="card-title">{doc.name}</h4>
-                    <span className="badge bg-secondary badge-pill">{doc.badge1}</span>
-                    <span className="badge bg-secondary badge-pill">{doc.badge2}</span>
-                    <span className="badge bg-secondary badge-pill mb-2">{doc.badge3}</span><br />
-                    <a href="#" className="link">Book Consultation</a>
+                    <span className="badge bg-secondary me-1">{doc.badge1}</span>
+                    <span className="badge bg-warning text-dark me-1">{doc.badge2}</span>
+                    <span className="badge bg-info text-dark">{doc.badge3}</span>
+                    <div className="mt-3"><Link to="/reviews" className="link">Book Consultation</Link></div>
                   </div>
                 </div>
               </div>
@@ -178,19 +165,19 @@ export default function Home() {
           </div>
           <div className="row justify-content-evenly mt-4 px-4">
             {[
-              { img: '/images/oooo.png', name: 'Sonalika dixit', badge1: 'Dentist', badge2: '4 ⭐', badge3: '12 year exp' },
-              { img: '/images/sssss.png', name: 'Shivam mishra', badge1: 'Pediatrician', badge2: '4.8⭐', badge3: '15 years exp' },
-              { img: '/images/ppppp.png', name: 'Abhay saraswat', badge1: 'Dermatologist', badge2: '4.6⭐', badge3: '35 years exp' },
+              { img: '/images/oooo.png', name: 'Dr. Sonalika Dixit', badge1: 'Dentist', badge2: '4.0⭐', badge3: '12 yrs exp' },
+              { img: '/images/sssss.png', name: 'Dr. Shivam Mishra', badge1: 'Pediatrician', badge2: '4.8⭐', badge3: '15 yrs exp' },
+              { img: '/images/ppppp.png', name: 'Dr. Abhay Saraswat', badge1: 'Dermatologist', badge2: '4.6⭐', badge3: '35 yrs exp' },
             ].map((doc, i) => (
-              <div key={i} className="post col-md-4 all col-10 mt-3 mt-md-0" data-aos="fade-up">
+              <div key={i} className="post col-md-4 col-10 mt-3 mt-md-0" data-aos="fade-up">
                 <div className="card">
                   <img src={doc.img} className="card-img-top" alt={doc.name} />
                   <div className="card-body text-center">
                     <h4 className="card-title">{doc.name}</h4>
-                    <span className="badge bg-secondary badge-pill">{doc.badge1}</span>
-                    <span className="badge bg-secondary badge-pill">{doc.badge2}</span>
-                    <span className="badge bg-secondary badge-pill mb-2">{doc.badge3}</span><br />
-                    <a href="#" className="link">Book Consultation</a>
+                    <span className="badge bg-secondary me-1">{doc.badge1}</span>
+                    <span className="badge bg-warning text-dark me-1">{doc.badge2}</span>
+                    <span className="badge bg-info text-dark">{doc.badge3}</span>
+                    <div className="mt-3"><Link to="/reviews" className="link">Book Consultation</Link></div>
                   </div>
                 </div>
               </div>
@@ -198,8 +185,8 @@ export default function Home() {
           </div>
           <div className="text-center mt-4">
             <Link to="/reviews">
-              <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill" style={{ width: '400px', textDecoration: 'none', color: '#fff' }}>
-                Find more doctor
+              <button className="c-btn h-btn mt-3 py-3 px-5 rounded-pill" style={{ width: 'min(400px, 90%)', color: '#fff' }}>
+                Find More Doctors
               </button>
             </Link>
           </div>
@@ -210,7 +197,7 @@ export default function Home() {
       <section className="testimonial mt-5 pt-5" id="testimonial">
         <div className="row justify-content-evenly">
           <div className="col-md-4 col-10" data-aos="slide-right">
-            <img src="/images/qqq.avif" className="img-fluid" alt="happy Clients" />
+            <img src="/images/qqq.avif" className="img-fluid rounded-4 shadow" alt="happy clients" />
           </div>
           <div className="col-md-6 col-10 mt-5" data-aos="slide-left">
             <div className="heading">
@@ -222,8 +209,8 @@ export default function Home() {
                     <div className="row justify-content-evenly">
                       <div className="col-2 text-center"><i className="bi bi-quote"></i></div>
                       <div className="col-10">
-                        <p className="text-muted">Medichain is revolutionary! As a first-time user, I was skeptical about online doctor consultations, but the blockchain-based reviews gave me the confidence to proceed. The doctors I found were top-rated, and the consultation was thorough and professional. I'm really glad to see a platform like this that values privacy, security, and trust in healthcare.</p>
-                        <h4>Arvind arora</h4>
+                        <p className="text-muted">Medichain is revolutionary! The blockchain-based reviews gave me confidence to choose the right doctor. The consultation was thorough and professional.</p>
+                        <h4>Arvind Arora</h4>
                         <small className="fs-6 text-muted">Heart patient</small>
                       </div>
                     </div>
@@ -232,9 +219,9 @@ export default function Home() {
                     <div className="row justify-content-evenly">
                       <div className="col-2 text-center"><i className="bi bi-quote"></i></div>
                       <div className="col-10">
-                        <p className="text-muted">I found my doctor quickly and safely through Medichain. The blockchain review system made me trust the feedback. A fantastic experience!</p>
-                        <h4>Ram prasad</h4>
-                        <small className="fs-6 text-muted">cancer patient</small>
+                        <p className="text-muted">I found my doctor quickly and safely. The blockchain review system made me trust the feedback completely. A fantastic experience!</p>
+                        <h4>Ram Prasad</h4>
+                        <small className="fs-6 text-muted">Cancer patient</small>
                       </div>
                     </div>
                   </div>
@@ -242,7 +229,7 @@ export default function Home() {
                     <div className="row justify-content-evenly">
                       <div className="col-2 text-center"><i className="bi bi-quote"></i></div>
                       <div className="col-10">
-                        <p className="text-muted">Medichain has completely changed the way I approach healthcare! The blockchain integration guarantees that the reviews I read are authentic, so I can choose the best doctors with confidence.</p>
+                        <p className="text-muted">Medichain has completely changed how I approach healthcare! The blockchain integration guarantees authentic reviews so I can choose doctors with confidence.</p>
                         <h4>Sonia Malhotra</h4>
                         <small className="fs-6 text-muted">Anemia patient</small>
                       </div>
@@ -270,18 +257,20 @@ export default function Home() {
         </div>
         <div className="row justify-content-evenly px-4 mt-4" data-aos="fade-up">
           {[
-            { img: '/images/who.png', title: 'How Blockchain is Revolutionizing Healthcare', author: 'Shobhit Mishra', date: 'Mar 20,2024', text: 'This blog can discuss the role of blockchain technology in transforming healthcare, focusing on data security, patient privacy, and tamper-proof systems.' },
-            { img: '/images/shakee.jpg', title: 'Top Benefits of Tamper-Proof Reviews in Healthcare', author: 'Shobhit Mishra', date: 'june 8,2024', text: 'Highlight the importance of reliable doctor reviews in the medical field.' },
-            { img: '/images/yes.jpg', title: 'The Future of Doctor-Patient Relationships with Blockchain', author: 'Shobhit Mishra', date: 'july 21,2024', text: 'Explore how blockchain can enhance trust in doctor-patient interactions.' },
+            { img: '/images/123.png', title: 'Telemedicine: The Future of Healthcare', author: 'Deepali', date: 'Jan 15, 2025', text: 'Explore how telemedicine is transforming healthcare delivery, making it more accessible and convenient for patients worldwide.' },
+            { img: '/images/dd.png', title: '5 Tips for Choosing the Right Doctor', author: 'Deepali', date: 'Feb 22, 2025', text: 'Finding the right doctor can be overwhelming. Here are 5 practical tips to help you make an informed decision for your health.' },
+            { img: '/images/b.png', title: 'How Blockchain Ensures Data Security', author: 'Deepali', date: 'Mar 8, 2025', text: 'Learn how blockchain technology creates an immutable record of patient reviews, ensuring complete transparency and trust.' },
           ].map((post, i) => (
-            <div key={i} className="blogpost col-md-4 col-10 mt-5 mt-md-0 all rounded-5">
-              <div className="card">
+            <div key={i} className="blogpost col-md-4 col-10 mt-5 mt-md-0 rounded-5">
+              <div className="card h-100">
                 <img src={post.img} className="card-img-top rounded-4" alt={post.title} />
-                <div className="card-body px-4">
-                  <small>{post.author}</small><span className="ms-3">{post.date}</span>
-                  <h4 className="card-title"><a href="#">{post.title}</a></h4>
-                  <p className="text-muted">{post.text}</p>
-                  <a href="#" className="read-more-btn link">Read More</a>
+                <div className="card-body px-4 d-flex flex-column">
+                  <div className="mb-2">
+                    <small className="fw-bold">{post.author}</small><span className="ms-3 text-muted">{post.date}</span>
+                  </div>
+                  <h4 className="card-title">{post.title}</h4>
+                  <p className="text-muted flex-grow-1">{post.text}</p>
+                  <a href="#" className="read-more-btn link mt-auto">Read More</a>
                 </div>
               </div>
             </div>
@@ -296,22 +285,17 @@ export default function Home() {
         </div>
         <div className="row justify-content-evenly mt-5">
           <div className="col-md-5 col-10 contact-details" data-aos="slide-right">
-            <div className="row justify-content-evenly">
-              <div className="col-1"><i className="bi bi-geo-alt-fill"></i></div>
-              <div className="col-11"><p>Gurugram sec -63, NEW DELHI</p></div>
-            </div>
-            <div className="row justify-content-evenly">
-              <div className="col-1"><i className="bi bi-telephone-fill"></i></div>
-              <div className="col-11"><p>+91 9354203546</p></div>
-            </div>
-            <div className="row justify-content-evenly">
-              <div className="col-1"><i className="bi bi-send-fill"></i></div>
-              <div className="col-11"><p>Medichain.support@gmail.com</p></div>
-            </div>
-            <div className="row justify-content-evenly">
-              <div className="col-1"><i className="bi bi-globe-americas"></i></div>
-              <div className="col-11"><p>Medichain.com</p></div>
-            </div>
+            {[
+              { icon: 'bi-geo-alt-fill', text: 'Gurugram Sec-63, New Delhi' },
+              { icon: 'bi-telephone-fill', text: '+91 9354203546' },
+              { icon: 'bi-send-fill', text: 'Medichain.support@gmail.com' },
+              { icon: 'bi-globe-americas', text: 'Medichain.com' },
+            ].map((item, i) => (
+              <div key={i} className="row justify-content-evenly mb-3">
+                <div className="col-1"><i className={`bi ${item.icon}`}></i></div>
+                <div className="col-11"><p className="mb-0">{item.text}</p></div>
+              </div>
+            ))}
           </div>
           <div className="col-md-5 col-10 mt-3 mt-md-0" data-aos="slide-left">
             <div className="contact-form">
