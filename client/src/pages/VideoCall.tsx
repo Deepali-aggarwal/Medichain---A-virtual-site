@@ -12,7 +12,7 @@ export default function VideoCall() {
   const pcRef = useRef<RTCPeerConnection | null>(null);
 
   useEffect(() => {
-    const s = io('http://localhost:5000');
+    const s = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000');
     setSocket(s);
 
     s.on('doc-found', ({ partnerId: pid }) => {
